@@ -1,0 +1,27 @@
+# Exclude the halo-files application directory from package publication
+# This is a separate application that uses the plugin, not part of the plugin itself
+halo-files/
+
+# Exclude build artifacts and generated files
+build/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+
+# Exclude IDE and editor files
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+*~
+
+# Exclude documentation files not needed in package
+PUBLISHING_GUIDE.md
+PUBLISH_CHECKLIST.md
+QUICK_PUBLISH.md
+
+# Exclude any local environment or test files
+*.log
+

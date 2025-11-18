@@ -1,12 +1,19 @@
 name: halo_videoplayer
 description: "A unified video player plugin that works across all platforms (Android, iOS, macOS, Windows, Linux, Web) with support for all standard video formats."
-version: 0.0.1
+version: 0.0.3
 homepage: https://github.com/premkumarkota/halo_videoplayer
 repository: https://github.com/premkumarkota/halo_videoplayer
 
 environment:
   sdk: ^3.7.2
   flutter: '>=3.3.0'
+
+# Ignore false-positive secret detection in example/test files
+false_secrets:
+  - /halo-files/**
+  - /example/**
+  - '**/google-services.json'
+  - '**/firebase_options*.dart'
 
 dependencies:
   flutter:
