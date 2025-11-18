@@ -32,7 +32,7 @@ class _MyAppState extends State<MyApp> {
           setState(() {});
         })
         .catchError((error) {
-          print('Error initializing video: $error');
+          debugPrint('Error initializing video: $error');
         });
   }
 

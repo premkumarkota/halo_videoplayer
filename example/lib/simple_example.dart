@@ -1,7 +1,7 @@
-/// Simple Example - How End Users Use the Plugin
-///
-/// This is a minimal example showing how to use halo_videoplayer plugin
-/// in a Flutter application.
+// Simple Example - How End Users Use the Plugin
+//
+// This is a minimal example showing how to use halo_videoplayer plugin
+// in a Flutter application.
 
 import 'package:flutter/material.dart';
 import 'package:halo_videoplayer/halo_videoplayer.dart';
@@ -62,7 +62,7 @@ class _SimpleVideoPlayerPageState extends State<SimpleVideoPlayerPage> {
           });
         })
         .catchError((error) {
-          print('Error: $error');
+          debugPrint('Error: $error');
         });
   }
 

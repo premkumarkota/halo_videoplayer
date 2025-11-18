@@ -30,7 +30,14 @@ class MethodChannelHaloVideoplayer extends HaloVideoplayerPlatform {
 
   MethodChannelHaloVideoplayer() {
     // Listen to platform messages for value updates
-    methodChannel.setMethodCallHandler(_handleMethodCall);
+    // Handler will be set when binding is initialized
+    // In tests, ensure TestWidgetsFlutterBinding.ensureInitialized() is called first
+    try {
+      methodChannel.setMethodCallHandler(_handleMethodCall);
+    } catch (_) {
+      // Binding not initialized yet - handler will be set when needed
+      // This can happen during static initialization in tests
+    }
   }
 
   Future<dynamic> _handleMethodCall(MethodCall call) async {

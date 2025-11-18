@@ -1,29 +1,42 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:halo_videoplayer/halo_videoplayer.dart';
-import 'package:halo_videoplayer/halo_videoplayer_platform_interface.dart';
 import 'package:halo_videoplayer/halo_videoplayer_method_channel.dart';
-import 'package:plugin_platform_interface/plugin_platform_interface.dart';
-
-class MockHaloVideoplayerPlatform
-    with MockPlatformInterfaceMixin
-    implements HaloVideoplayerPlatform {
-
-  @override
-  Future<String?> getPlatformVersion() => Future.value('42');
-}
 
 void main() {
-  final HaloVideoplayerPlatform initialPlatform = HaloVideoplayerPlatform.instance;
+  TestWidgetsFlutterBinding.ensureInitialized();
+
+  final HaloVideoplayerPlatform initialPlatform =
+      HaloVideoplayerPlatform.instance;
 
   test('$MethodChannelHaloVideoplayer is the default instance', () {
     expect(initialPlatform, isInstanceOf<MethodChannelHaloVideoplayer>());
   });
 
-  test('getPlatformVersion', () async {
-    HaloVideoplayer haloVideoplayerPlugin = HaloVideoplayer();
-    MockHaloVideoplayerPlatform fakePlatform = MockHaloVideoplayerPlatform();
-    HaloVideoplayerPlatform.instance = fakePlatform;
+  test('HaloVideoPlayerController can be created', () {
+    final controller = HaloVideoPlayerController(
+      dataSource: HaloVideoPlayerDataSource.network(
+        'https://example.com/video.mp4',
+      ),
+    );
+    expect(controller, isNotNull);
+    expect(controller.dataSource.isNetwork, true);
+    expect(controller.dataSource.source, 'https://example.com/video.mp4');
+  });
 
-    expect(await haloVideoplayerPlugin.getPlatformVersion(), '42');
+  test('HaloVideoPlayerController with asset source', () {
+    final controller = HaloVideoPlayerController(
+      dataSource: HaloVideoPlayerDataSource.asset('videos/test.mp4'),
+    );
+    expect(controller.dataSource.isAsset, true);
+    expect(controller.dataSource.source, 'videos/test.mp4');
+  });
+
+  test('HaloVideoPlayerController with file source', () {
+    final controller = HaloVideoPlayerController(
+      dataSource: HaloVideoPlayerDataSource.file('/path/to/video.mp4'),
+    );
+    expect(controller.dataSource.isNetwork, false);
+    expect(controller.dataSource.isAsset, false);
+    expect(controller.dataSource.source, '/path/to/video.mp4');
   });
 }

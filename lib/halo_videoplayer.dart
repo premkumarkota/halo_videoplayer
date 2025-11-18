@@ -1,13 +1,9 @@
-library halo_videoplayer;
-
 export 'halo_videoplayer_platform_interface.dart';
 export 'src/halo_videoplayer_windows.dart' if (dart.library.html) '';
 export 'src/halo_videoplayer_linux.dart' if (dart.library.html) '';
 
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter/foundation.dart';
 import 'package:video_player/video_player.dart';
 
 import 'halo_videoplayer_platform_interface.dart';
@@ -22,7 +18,7 @@ class HaloVideoPlayerController extends ValueNotifier<HaloVideoPlayerValue> {
   bool _looping = false;
 
   /// Whether the video should auto-play
-  bool _autoPlay = false;
+  final bool _autoPlay;
 
   /// The volume of the video (0.0 to 1.0)
   double _volume = 1.0;
