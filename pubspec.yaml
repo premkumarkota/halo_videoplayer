@@ -1,8 +1,8 @@
 name: halo_videoplayer
 description: "A unified video player plugin that works across all platforms (Android, iOS, macOS, Windows, Linux, Web) with support for all standard video formats."
 version: 0.0.1
-homepage: https://github.com/yourusername/halo_videoplayer
-repository: https://github.com/yourusername/halo_videoplayer
+homepage: https://github.com/premkumarkota/halo_videoplayer
+repository: https://github.com/premkumarkota/halo_videoplayer
 
 environment:
   sdk: ^3.7.2
